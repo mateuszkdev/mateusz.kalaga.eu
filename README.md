@@ -1,2 +1,1 @@
-# mateusz.kalaga.eu
-My Personal Page
+## mateusz.kalaga.eu
