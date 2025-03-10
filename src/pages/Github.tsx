@@ -1,8 +1,8 @@
-import Header from "./components/Header";
-import About from "./components/About";
-import Footer from "./components/Footer";
+import Header from "../components/Header";
+import Repos from "../components/Repos";
+import Footer from "../components/Footer";
 
-const Home =() => {
+const Github =() => {
 
   return (
     <div className="min-h-screen bg-gradient-to-tl from-[#09203F] to-[#537895] flex flex-col justify-center items-center">
@@ -11,9 +11,7 @@ const Home =() => {
 
       <div className="pt-16 w-full flex flex-col items-center">
 
-        <About />
-
-        {/* <Projects /> */}
+        <Repos />
 
         <Footer />
 
@@ -24,4 +22,4 @@ const Home =() => {
   );
 }
 
-export default Home;
+export default Github;
