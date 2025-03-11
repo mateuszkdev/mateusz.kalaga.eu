@@ -1,4 +1,5 @@
 import About from "./components/About";
+import Projects from './components/Projects';
 import Footer from "./components/Footer";
 
 const Home =() => {
@@ -9,6 +10,8 @@ const Home =() => {
       <div className="pt-16 w-full flex flex-col items-center">
 
         <About />
+        
+        <Projects />
 
         <Footer />
 
