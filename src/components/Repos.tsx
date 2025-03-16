@@ -52,7 +52,7 @@ const Projects = () => {
                     {repo.description ? repo.description : 'No description'}
                 </p>
 
-                <a href={repo.html_url} className="inline-flex font-medium items-center text-white hover:underline float-end">
+                <a href={repo.html_url} target='_blank' className="inline-flex font-medium items-center text-white hover:underline float-end">
 
                     <span>View on GitHub</span>
 
