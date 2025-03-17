@@ -3,12 +3,28 @@
 
 import { useState, useEffect } from "react"
 import { motion, AnimatePresence } from "framer-motion"
-import { Menu, X, Mail, ArrowDown } from "lucide-react"
+import { Menu, X, Mail, ArrowDown, Code, Layout, Palette, GraduationCap, Briefcase } from "lucide-react"
 import "./App.css"
 import GithubIcon from "./GithubIcon"
 import DiscordIcon from "./DiscordIcon"
+import {
+  NodejsIcon,
+  DenoIcon,
+  TypeScriptIcon,
+  JavaScriptIcon,
+  TailwindIcon,
+  NextjsIcon,
+  ReactIcon,
+  ViteIcon,
+  MongoDBIcon,
+  SQLIcon,
+  PythonIcon,
+  ShadcnIcon,
+} from './TechIcons'
 // @ts-ignore
 import projects from "./projects"
+// @ts-ignore
+import journey from "./journey"
 
 const Home = () => {
   const [activeSection, setActiveSection] = useState("home")
@@ -19,7 +35,7 @@ const Home = () => {
     const handleScroll = () => {
       setScrollY(window.scrollY)
 
-      const sections = ["home", "about", "projects", "skills", "contact"]
+      const sections = ["home", "about", "projects", "skills", "timeline", "contact"]
 
       for (const section of sections) {
         const element = document.getElementById(section)
@@ -44,6 +60,7 @@ const Home = () => {
     { id: "about", label: "About" },
     { id: "projects", label: "Projects" },
     { id: "skills", label: "Skills" },
+    { id: "timeline", label: "Journey" },
     { id: "contact", label: "Contact" },
   ]
 
@@ -188,7 +205,7 @@ const Home = () => {
               >
                 <DiscordIcon />
               </motion.a>
-  
+
               <motion.a
                 href="mailto:test@test.com"
                 className="bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors"
@@ -241,14 +258,16 @@ const Home = () => {
                 </div>
 
                 <div className="text-gray-300">
-                Hi, I'm Mateusz, {new Date().getFullYear() - 2002} year's old seasoned backend developer with {new Date().getFullYear() - 2018} years of experience. My expertise lies in backend systems using mainly node/deno and js/ts but I'm not completely unfamiliar with other technologies. I also have a good grasp of fundamental web development.
+                  Hi, I'm Mateusz, {new Date().getFullYear() - 2002} year's old seasoned backend developer with{" "}
+                  {new Date().getFullYear() - 2018} years of experience. My expertise lies in backend systems using
+                  mainly node/deno and js/ts but I'm not completely unfamiliar with other technologies. I also have a
+                  good grasp of fundamental web development.
                 </div>
               </div>
             </div>
           </motion.div>
         </div>
       </section>
-
 
       {/* Projects Section */}
       <section id="projects" className="py-20 bg-gradient-to-br from-gray-900 to-black">
@@ -264,73 +283,89 @@ const Home = () => {
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-              {projects.map((project: { 
-                title: string,
-                description: string,
-                image: string,
-                tags: string[],
-                archived: boolean,
-                url: string,
-                github: string
-              }, index: number) => (
-              <motion.div
-                key={project.title}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: index * 0.1 }}
-                viewport={{ once: true }}
-                className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
-              >
-                <div className="h-48 overflow-hidden">
-                <img
-                src={project.image || "/placeholder.svg"}
-                alt={project.title}
-                className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
-                />
-                </div>
-                <div className="p-6">
-                <h3 className="text-xl font-medium text-white mb-2">{project.title}</h3>
-                <p className="text-gray-400 mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2 mb-4">
-                {project.tags.map((tag) => (
-                <span key={tag} className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">
-                  {tag}
-                </span>
-                ))}
-                {project.archived && (
-                <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded-full">
-                  Archived
-                </span>
-                )}
-                </div>
-                <div className="flex justify-between items-center">
-                {project.url && (
-                  <a href={project.url} target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline">
-                    View Project
-                  </a>
-                )}
-                {project.github && (
-                  <>
-                    <a href={project.github} target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2 group">
-                    {project.url ? (
-                      <>
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">View on GitHub</span>
-                        <GithubIcon />
-                      </>
-                    ) : (
-                      <>
-                        <GithubIcon />
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity">View on GitHub</span>
-                      </>
-                    )}
-
-                    </a>
-                </>
-                )}
-                </div>
-                </div>
-              </motion.div>
-              ))}
+              {projects.map(
+                (
+                  project: {
+                    title: string
+                    description: string
+                    image: string
+                    tags: string[]
+                    archived: boolean
+                    url: string
+                    github: string
+                  },
+                  index: number,
+                ) => (
+                  <motion.div
+                    key={project.title}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.5, delay: index * 0.1 }}
+                    viewport={{ once: true }}
+                    className="bg-white/5 backdrop-blur-sm rounded-xl overflow-hidden hover:transform hover:scale-105 transition-all duration-300"
+                  >
+                    <div className="h-48 overflow-hidden">
+                      <img
+                        src={project.image || "/placeholder.svg"}
+                        alt={project.title}
+                        className="w-full h-full object-cover transition-transform duration-500 hover:scale-110"
+                      />
+                    </div>
+                    <div className="p-6">
+                      <h3 className="text-xl font-medium text-white mb-2">{project.title}</h3>
+                      <p className="text-gray-400 mb-4">{project.description}</p>
+                      <div className="flex flex-wrap gap-2 mb-4">
+                        {project.tags.map((tag) => (
+                          <span key={tag} className="text-xs bg-purple-500/20 text-purple-300 px-2 py-1 rounded-full">
+                            {tag}
+                          </span>
+                        ))}
+                        {project.archived && (
+                          <span className="text-xs bg-red-500/20 text-red-300 px-2 py-1 rounded-full">Archived</span>
+                        )}
+                      </div>
+                      <div className="flex justify-between items-center">
+                        {project.url && (
+                          <a
+                            href={project.url}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-purple-400 hover:underline"
+                          >
+                            View Project
+                          </a>
+                        )}
+                        {project.github && (
+                          <>
+                            <a
+                              href={project.github}
+                              target="_blank"
+                              rel="noopener noreferrer"
+                              className="text-gray-400 hover:text-white transition-colors flex items-center space-x-2 group"
+                            >
+                              {project.url ? (
+                                <>
+                                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                    View on GitHub
+                                  </span>
+                                  <GithubIcon />
+                                </>
+                              ) : (
+                                <>
+                                  <GithubIcon />
+                                  <span className="opacity-0 group-hover:opacity-100 transition-opacity">
+                                    View on GitHub
+                                  </span>
+                                </>
+                              )}
+                            </a>
+                          </>
+                        )}
+                      </div>
+                    </div>
+                  </motion.div>
+                ),
+              )}
             </div>
           </motion.div>
         </div>
@@ -346,23 +381,23 @@ const Home = () => {
             viewport={{ once: true }}
           >
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-              My Skills
+              Technologies I Use
             </h2>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
               {[
-                { name: "React", level: 80 },
-                { name: "JavaScript", level: 99 },
-                { name: "TypeScript", level: 99 },
-                { name: "Tailwind CSS", level: 90 },
-                { name: "Vue.js", level: 75 },
-                { name: "Next.js", level: 85 },
-                { name: "Node.js", level: 99 },
-                { name: "Deno", level: 80 },
-                { name: "MongoDB", level: 90 },
-                { name: "SQL", level: 80 },
-                { name: "Python", level: 60 },
-                { name: "Fun", level: 100}
+                { name: "Node.js", icon: <NodejsIcon /> },
+                { name: "Deno", icon: <DenoIcon /> },
+                { name: "TypeScript", icon: <TypeScriptIcon /> },
+                { name: "JavaScript", icon: <JavaScriptIcon /> },
+                { name: "Tailwind CSS", icon: <TailwindIcon /> },
+                { name: "Next.js", icon: <NextjsIcon /> },
+                { name: "React", icon: <ReactIcon /> },
+                { name: "Vite.js", icon: <ViteIcon /> },
+                { name: "MongoDB", icon: <MongoDBIcon /> },
+                { name: "SQL", icon: <SQLIcon /> },
+                { name: "Python", icon: <PythonIcon /> },
+                { name: "Shadcn", icon: <ShadcnIcon /> },
               ].map((skill, index) => (
                 <motion.div
                   key={skill.name}
@@ -370,19 +405,70 @@ const Home = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: index * 0.1 }}
                   viewport={{ once: true }}
-                  className="bg-white/5 backdrop-blur-sm rounded-xl p-6 hover:bg-white/10 transition-colors"
+                  className="bg-white/5 backdrop-blur-sm rounded-xl p-5 hover:bg-white/10 transition-colors"
                 >
-                  <h3 className="text-xl font-medium text-white mb-3">{skill.name}</h3>
-                  <div className="w-full bg-gray-700 rounded-full h-2.5">
-                    <motion.div
-                      className="h-2.5 rounded-full bg-gradient-to-r from-purple-500 to-pink-500"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: `${skill.level}%` }}
-                      transition={{ duration: 1, delay: 0.2 }}
-                      viewport={{ once: true }}
-                    ></motion.div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-white">{skill.icon}</div>
+                    <h3 className="text-xl font-medium text-white">{skill.name}</h3>
                   </div>
-                  <p className="text-right text-sm text-gray-400 mt-1">{skill.level}%</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Timeline Section */}
+      <section id="timeline" className="py-20 bg-gradient-to-br from-black to-gray-900">
+        <div className="container mx-auto px-4">
+          <motion.div
+            initial={{ opacity: 0 }}
+            whileInView={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+            viewport={{ once: true }}
+          >
+            <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
+              My Journey
+            </h2>
+
+            <div className="relative max-w-4xl mx-auto">
+              {/* Vertical Line */}
+              <div className="absolute left-1/2 transform -translate-x-1/2 h-full w-1 bg-gradient-to-b from-purple-500 to-pink-600 rounded-full"></div>
+
+              {journey.map((item: { year: string; title: string; company: string; description: string; icon: string }, index: number) => (
+                <motion.div
+                  key={index}
+                  className={`relative z-10 mb-12 flex items-center timeline-mobile-adjust ${
+                    index % 2 === 0 ? "flex-row" : "flex-row-reverse"
+                  }`}
+                  initial={{ opacity: 0, y: 50 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  viewport={{ once: true }}
+                >
+                  {/* Content */}
+                  <div className={`w-5/12 ${index % 2 === 0 ? "text-right pr-8" : "text-left pl-8"}`}>
+                    <div className="bg-white/5 backdrop-blur-sm p-6 rounded-xl hover:bg-white/10 transition-colors shadow-lg">
+                      <span className="text-sm font-semibold text-purple-400">{item.year}</span>
+                      <h3 className="text-xl font-bold text-white mt-1">{item.title}</h3>
+                      <p className="text-gray-400 text-sm mt-1">{item.company}</p>
+                      <p className="text-gray-300 mt-3">{item.description}</p>
+                    </div>
+                  </div>
+
+                  {/* Center Icon */}
+                  <div className="absolute left-1/2 transform -translate-x-1/2 flex items-center justify-center">
+                    <div className="w-12 h-12 rounded-full bg-gradient-to-r from-purple-500 to-pink-600 flex items-center justify-center shadow-lg">
+                      {item.icon === "Code" && <Code className="w-6 h-6 text-white" />}
+                      {item.icon === "Layout" && <Layout className="w-6 h-6 text-white" />}
+                      {item.icon === "Palette" && <Palette className="w-6 h-6 text-white" />}
+                      {item.icon === "GraduationCap" && <GraduationCap className="w-6 h-6 text-white" />}
+                      {item.icon === "Briefcase" && <Briefcase className="w-6 h-6 text-white" />}
+                    </div>
+                  </div>
+
+                  {/* Empty space for the other side */}
+                  <div className="w-5/12"></div>
                 </motion.div>
               ))}
             </div>
@@ -401,18 +487,27 @@ const Home = () => {
             className="max-w-3xl mx-auto"
           >
             <h2 className="text-3xl md:text-4xl font-bold text-center mb-12 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-pink-600">
-            You can reach me at
+              You can reach me at
             </h2>
 
             <div className="bg-white/5 backdrop-blur-sm rounded-2xl p-8 shadow-xl text-center text-gray-300 space-y-4">
               <p className="text-lg">Feel free to reach out to me via email or Discord:</p>
               <div>
-              <p className="text-lg font-medium">Email:</p>
-              <a href="mailto:test@test.com" className="text-purple-400 hover:underline text-xl">test@test.com</a>
+                <p className="text-lg font-medium">Email:</p>
+                <a href="mailto:test@test.com" className="text-purple-400 hover:underline text-xl">
+                  test@test.com
+                </a>
               </div>
               <div>
-              <p className="text-lg font-medium">Discord:</p>
-              <a href="https://discord.com" target="_blank" rel="noopener noreferrer" className="text-purple-400 hover:underline text-xl">https://discord.gg/QHn3uhHGhR</a>
+                <p className="text-lg font-medium">Discord:</p>
+                <a
+                  href="https://discord.com"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-purple-400 hover:underline text-xl"
+                >
+                  https://discord.gg/QHn3uhHGhR
+                </a>
               </div>
             </div>
           </motion.div>
@@ -424,7 +519,7 @@ const Home = () => {
         <div className="container mx-auto px-4">
           <div className="flex flex-col md:flex-row justify-between items-center">
             <p className="text-gray-400 text-sm mb-4 md:mb-0">
-            Mateusz Kalaga © {(new Date().getFullYear() == 2025) ? '2025' : `2025 - ${new Date().getFullYear()}`}
+              Mateusz Kalaga © {new Date().getFullYear() == 2025 ? "2025" : `2025 - ${new Date().getFullYear()}`}
             </p>
 
             <div className="flex space-x-4">
@@ -436,7 +531,7 @@ const Home = () => {
               >
                 <GithubIcon />
               </a>
-              
+
               <a
                 href="https://discord.gg/QHn3uhHGhR"
                 target="_blank"

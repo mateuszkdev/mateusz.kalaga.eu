@@ -1,28 +1,58 @@
 @keyframes blob {
-    0% {
-      transform: translate(0px, 0px) scale(1);
-    }
-    33% {
-      transform: translate(30px, -50px) scale(1.1);
-    }
-    66% {
-      transform: translate(-20px, 20px) scale(0.9);
-    }
-    100% {
-      transform: translate(0px, 0px) scale(1);
-    }
+  0% {
+    transform: translate(0px, 0px) scale(1);
   }
-  
-  .animate-blob {
-    animation: blob 7s infinite;
+  33% {
+    transform: translate(30px, -50px) scale(1.1);
   }
-  
-  .animation-delay-2000 {
-    animation-delay: 2s;
+  66% {
+    transform: translate(-20px, 20px) scale(0.9);
   }
-  
-  .animation-delay-4000 {
-    animation-delay: 4s;
+  100% {
+    transform: translate(0px, 0px) scale(1);
   }
-  
-  
+}
+
+.animate-blob {
+  animation: blob 7s infinite;
+}
+
+.animation-delay-2000 {
+  animation-delay: 2s;
+}
+
+.animation-delay-4000 {
+  animation-delay: 4s;
+}
+
+/* Add responsive styles for the timeline */
+@media (max-width: 768px) {
+  .timeline-mobile-adjust {
+    flex-direction: row !important;
+    justify-content: flex-start !important;
+  }
+
+  .timeline-mobile-adjust > div:first-child {
+    width: calc(100% - 30px) !important;
+    text-align: left !important;
+    padding-left: 45px !important;
+    padding-right: 0 !important;
+    margin-left: 30px;
+  }
+
+  .timeline-mobile-adjust > div:last-child {
+    display: none;
+  }
+
+  .timeline-mobile-adjust .absolute {
+    left: 15px !important;
+    transform: none !important;
+  }
+
+  /* Move the vertical line to the left */
+  #timeline .relative > .absolute:first-child {
+    left: 15px !important;
+    transform: none !important;
+  }
+}
+

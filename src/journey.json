@@ -1,0 +1,51 @@
+[
+    {
+      "year": "2015",
+      "title": "Learning to Code",
+      "company": "Self-learning",
+      "description": "Started learning simple HTML and CSS, .bat files and lua for MTA servers.",
+      "icon": "Code"
+    },
+    {
+      "year": "2018",
+      "title": "Starting a technical",
+      "company": "Techniczne Zakłady Naukowe",
+      "description": "Started learning Node.js and Discord.js / Express.js for backend development. In the meantime, I'm starting a technical school for IT.",
+      "icon": "GraduationCap"
+    },
+    {
+      "year": "2020",
+      "title": "First large project and ",
+      "company": "Self-learning",
+      "description": "Creating large discord bot Sparfy, also few smaller like my Antek. Learned pug and sass. Started learning React.js.",
+      "icon": "Code"
+    },
+    {
+      "year": "2022",
+      "title": "Completion of IT technical school",
+      "company": "Techniczne Zakłady Naukowe",
+      "description": "Graduated from IT technical school with a specialization in IT, mainly programming.",
+      "icon": "GraduationCap"
+    },
+    {
+      "year": "2022-2025",
+      "title": "Freelance Web Developer",
+      "company": "Self-employed",
+      "description": "Started freelancing, building websites for small businesses and individuals.",
+      "icon": "Briefcase"
+    },
+    {
+        "year": "2023",
+        "title": "Starting studies",
+        "company": "WSB Academy",
+        "description": "Started studying IT at WSB Academy in the field of programming.",
+        "icon": "GraduationCap"
+    },
+    {
+      "year": "2025-",
+      "title": "Creating my own projects",
+      "company": "Self-employed",
+      "description": "Started my own programming language, filebyte.cloud, and other projects that I'm working on.",
+      "icon": "Code"
+    }
+]
